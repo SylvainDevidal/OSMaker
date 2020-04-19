@@ -1,0 +1,215 @@
+
+Hey Hey
+
+Dossier"Concepteur de form en CS" contient des projets exemples en CS de concepteur windows form qui devra être implémenter dans le projet au plus tôt.
+Plus d'infos sur ces exemples suivant ce lien : 
+https://www.codeproject.com/Articles/60175/The-DesignSurface-Extended-Class-is-Back-Together
+
+Il y a 2 schémas, le premier représente le logiciel en mode édition de code CpcdosC+
+Le second représente le logiciel en mode conceptualisation du design de la fenêtre et des objets (implémenté à partir d'un des exemples du dossier "Concepteur de form en CS")
+
+J'ai essayé de faire la liaison entre génération de code cpcdosc+ et concepteur windows form mais je n'est pas les connaissances pour, malgré le fait que le net framework soit prévu pour gérer un concepteur depuis sa version 2.0(donc ca ne devrait pas être très dur), si vous le voulez bien , essayez de jouer avec tout ça. 
+
+Le projet que vous m'avez envoyé en CS est prometteur mais si je charge un fichier cpcdosc+ (ou .txt c'est pareil) avec plusieurs boutons plusieurs objets alors dans la liste box il ne figure que un seul bouton, il devrait y en avoir plusieurs ;)
+----------------
+Exemple : Quand un bouton est ajouté dans le concepteur de fenetre(DesignSurface) coté code cpcdosc+ un bouton est généré dans le code :
+Bouton/ nom du bouton
+ses paramètres....
+Fin/ Bouton
+
+Quand le bouton est modifié, déplacé etc dans le concepteur alors il doit être modifié aussi au sein de son code cpcdosc+.
+Si le bouton est modifié dans le code cpcdosc+ alors il doit être modifié dans le concepteur visuel aussi.
+(Meme principe que sur visual studio en plus simple)
+
+Tout contributeur au projet quelque soit l'aide apportée sera reconnu et informé.
+Une belle communauté attend cela depuis longtemps, j'espère y parvenir, seul ca serait compliqué, on y est presque.
+Merci à vous
+Maxime
+----------------------
+Exemple de fichier cpcdosc+ (pareil que .txt) pour coder une fenêtre et ses objets :
+La variable Handle_Fenetre sert pour les objets à être crée sur la fenêtre ayant le nom de Handle spécifié dans .handle =
+fenetre/ APP1
+        .titre                          = "My first window !"
+	    .px				= "100"
+	    .py				= "100"
+	    .tx				= "420"
+	    .ty				= "263"
+        .Opacite                        = "100"
+        .Parametres                     = "TYPE:0 ALPHAMODE:0"
+        .CouleurFenetre                 = "050,050,100"
+        .CouleurTitre                   = "255,255,255"
+        .CouleurFond                    = "150,000,220"
+        .Icone                          = "%OS_GUI%/ICO_DEF.png"
+        .ImgTitre                       = "IMG_TITRE.PNG"
+        .event                          = "%HOST_OS%/TEST.CPC"
+	@#Handle_Fenetre creer/
+		
+Fin/ fenetre
+
+Textebloc/ Mon_Textebloc
+	 .Handle			= "%Handle_Fenetre%"
+	 .Parametres		        = "BORD:1 IMGAUTO:1 COL:1"
+	 .Texte 			= "Hello!%CPC.CRLF%I'm textblock!%CPC.CRLF%Handle fenetre:%Handle_Fenetre%"
+	 .PX				= "5"
+	 .PY				= "5"
+	 .CouleurFond	                = "200,255,240"
+	 .CouleurTexte	                = "250,100,100"
+	 .tx				= "100"
+         .ty				= "20"
+	creer/
+Fin/ Textebloc
+
+Bouton/ Mon_Bouton
+	.Handle			        = "%Handle_Fenetre%"
+	.Parametres		        = "IMGAUTO:2"
+	.PX				= "130"
+	.PY				= "20"
+	.tx				= "100"
+	.ty				= "30"
+	.opacite		        = "100"
+        .texte                          = "OpenGL test"
+	.Image			        = "%OS_GUI%/Buttons/BTN_BLUE.png"
+	.event			        = "%HOST_OS%/TEST.CPC=MouseClick,MouseLeave"
+	creer/
+Fin/ Bouton
+
+Bouton/ Mon_Bouton2
+	.Handle			        = "%Handle_Fenetre%"
+	.Parametres		        = "IMGAUTO:2"
+	.PX				= "180"
+	.PY				= "80"
+	.tx				= "100"
+	.ty				= "30"
+	rem/ .opacite		        = "100"
+        .texte                          = "GZE test"
+	.Image			        = "%OS_GUI%/Buttons/BTN_PPOR.png"
+	.event			        = "%HOST_OS%/TEST.CPC"
+	creer/
+Fin/ Bouton
+
+Bouton/ Mon_Bouton3
+	.Handle			        = "%Handle_Fenetre%"
+	.Parametres		        = "IMGAUTO:2"
+	.PX				= "180"
+        .PY                             = "120"
+	.tx				= "100"
+	.ty				= "30"
+	rem/ .opacite		        = "100"
+	.texte			        = "Hello!"
+	.Image			        = "%OS_GUI%/Buttons/BTN_PPOR.png"
+	.event			        = "%HOST_OS%/TEST.CPC"
+	creer/
+Fin/ Bouton
+
+
+picturebox/ Image2
+	.Handle			= "%Handle_Fenetre%"
+	.Parametres		= "IMGAUTO:0"
+	.PX				= "10"
+	.PY				= "10"
+	.tx				= "200"
+	.ty				= "200"
+	.Image			= "%OS_GUI%/Ultima.png"
+	.opacite		= "100"
+	.event			= "OS/TEST.CPC"
+	creer/
+Fin/ Picturebox
+
+
+rem/ sys/ /debug = 2
+
+Imagebox/ Image3
+	.Handle			= "%Handle_Fenetre%"
+	
+	.Parametres		= "IMGAUTO:2"
+	.PX				= "0"
+	.PY				= "0"
+	.tx				= "300"
+	.ty				= "126"
+	.opacite		= "200"
+	.CouleurFond	= "255,010,010"
+	.CouleurTexte	= "000,255,000"
+	.Texte 			= "Blabla - handle parent %Handle_Fenetre%"
+	.Image			= ""
+	.event			= ""
+	creer/
+Fin/ Imagebox
+
+Imagebox/ Image4
+	.Handle			= "%Handle_Fenetre%"
+	.Parametres		= "IMGAUTO:2"
+	.PX				= "10"
+	.PY				= "10"
+	.tx				= "250"
+	.ty				= "200"
+	.opacite		= "200"
+	.Image			= "%OS_GUI%/CFT_FD.PNG"
+	.opacite		= "100"
+	.event			= ""
+	creer/
+Fin/ Imagebox
+
+
+Textbox/ MonTexteBox
+	.handle			= "%handle_fenetre%"
+	.parametres 	= "EDIT:1 MULTILINE:1"
+	.PX				= "50"
+	.PY				= "50"
+	.TX				= "200"
+	.TY				= "15"
+	.CouleurFond	= "255,255,255"
+	.CouleurTexte	= "000,000,000"
+	.texte			= "EDIT me !"
+	.event			= "%HOST_OS%/test.cpc"
+	Creer/
+Fin/ Textebox
+
+Checkbox/ MonCheckbox1
+	.handle 			= "%Handle_Fenetre%"
+	.Texte				= "Coche moi!"
+	.Valeur				= "1"
+	.Parametres			= "COL:0"
+	.CouleurFond		= "255,255,255"
+	.CouleurTexte		= "000,000,000"
+	.PX					= "100"
+	.PY					= "80"
+	.TX					= "10"
+	.TY					= "10"
+	
+	.evenement			= "%_exe_path_%=CLICK"
+	Creer/
+Fin/ checkBox
+
+
+Checkbox/ MonCheckbox2
+	.handle 			= "%Handle_Fenetre%"
+	.Texte				= "La aussi !"
+	.Valeur				= "1"
+	.Parametres			= "COL:0"
+	.CouleurFond		= "255,255,255"
+	.CouleurTexte		= "000,000,000"
+	.PX					= "100"
+	.PY					= "100"
+	.TX					= "10"
+	.TY					= "10"
+	
+	.evenement			= "%_exe_path_%=CLICK"
+	Creer/
+Fin/ checkBox
+
+
+Checkbox/ MonCheckbox3
+	.handle 			= "%Handle_Fenetre%"
+	.Texte				= "Et moi !!"
+	.Valeur				= "1"
+	.Parametres			= "COL:0"
+	.CouleurFond		= "255,255,255"
+	.CouleurTexte		= "000,000,000"
+	.PX					= "100"
+	.PY					= "120"
+	.TX					= "10"
+	.TY					= "10"
+	
+	.evenement			= "%_exe_path_%=CLICK"
+	Creer/
+Fin/ checkBox
