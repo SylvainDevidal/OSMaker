@@ -4,10 +4,11 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace CpcDosCPlus
 {
-    class CpcDosCPlusBouton : CpcDosCPlusObjet
+    public class CpcDosCPlusBouton : CpcDosCPlusObjet
     {
         public CpcDosCPlusBouton(string[] declaration) : base(declaration)
         {
@@ -204,6 +205,11 @@ namespace CpcDosCPlus
                     Attributes[".event"] = value;
                 }
             }
+        }
+
+        public override UserControl CreateUC()
+        {
+            return new Controls.UCButton(this) as UserControl;
         }
     }
 }

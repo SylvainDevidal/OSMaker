@@ -33,10 +33,6 @@ namespace CpcDosCPlus
 				}
 				else if (!chercheDebut && ligne.StartsWith("fin/"))
 				{
-					if (!ligne.EndsWith(typeObjet))
-					{
-						throw new Exception($"Fin d'objet {typeObjet} attendue, mais trouvé \"{ligne}\" à la ligne {i}");
-					}
 					switch (typeObjet)
 					{
 						case "fenetre":
@@ -58,6 +54,7 @@ namespace CpcDosCPlus
 							this.Add(new CpcDosCPlusTexteBloc(lignes.SubArray(debutObjet, i)));
 							break;
 						case "textbox":
+						case "textebox":
 							this.Add(new CpcDosCPlusTextBox(lignes.SubArray(debutObjet, i)));
 							break;
 						case "checkbox":
