@@ -46,7 +46,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(249, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 420);
+            this.panel1.Size = new System.Drawing.Size(539, 233);
             this.panel1.TabIndex = 1;
             // 
             // textBox1
