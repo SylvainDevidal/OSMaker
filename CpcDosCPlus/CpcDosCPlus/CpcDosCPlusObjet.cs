@@ -76,5 +76,20 @@ namespace CpcDosCPlus
 		{
 			return $"{TypeObjet} {ID}";
 		}
+
+		public string ToCPCDosCPlus()
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine($"{TypeObjet}/ {ID}");
+
+			foreach (KeyValuePair<string, string> kvp in Attributes)
+			{
+				sb.AppendLine($"\t.{kvp.Key} = \"{kvp.Value}\"");
+			}
+
+			sb.AppendLine($"End/ {TypeObjet}");
+
+			return sb.ToString();
+		}
     }
 }

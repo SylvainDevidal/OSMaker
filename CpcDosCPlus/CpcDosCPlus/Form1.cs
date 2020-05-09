@@ -18,6 +18,8 @@ namespace CpcDosCPlus
         {
             InitializeComponent();
             objets = new CpcDosCPlusListeObjets("fichier1.txt");
+
+            textBox1.Text = objets.ToCPCDosCPlus();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -70,5 +70,17 @@ namespace CpcDosCPlus
 				}
 			}
 		}
-    }
+
+		public string ToCPCDosCPlus()
+		{
+			StringBuilder sb = new StringBuilder();
+
+			foreach (CpcDosCPlusObjet objet in this)
+			{
+				sb.AppendLine(objet.ToCPCDosCPlus());
+			}
+
+			return sb.ToString();
+		}
+	}
 }
