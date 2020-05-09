@@ -29,5 +29,22 @@ namespace CpcDosCPlus
                 listBox1.Items.Add(objet);
             }
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            ListBox list = sender as ListBox;
+
+            if (list != null)
+            {
+                CpcDosCPlusObjet obj = list.SelectedItem as CpcDosCPlusObjet;
+
+                if (list != null)
+                {
+                    panel1.Controls.Add(obj.CreateUC());
+                }
+            }
+        }
     }
 }

@@ -46,14 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CpcDosCPlusPictureBox.cs" />
-    <Compile Include="CpcDosCPlusImageBox.cs" />
-    <Compile Include="CpcDosCPlusCheckBox.cs" />
-    <Compile Include="CpcDosCPlusTextBox.cs" />
-    <Compile Include="CpcDosCPlusTexteBloc.cs" />
-    <Compile Include="CpcDosCPlusBouton.cs" />
-    <Compile Include="CpcDosCPlusFenetre.cs" />
-    <Compile Include="CpcDosCPlusFonction.cs" />
+    <Compile Include="Controls\UCButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCButton.Designer.cs">
+      <DependentUpon>UCButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CPlusObjects\CpcDosCPlusPictureBox.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusImageBox.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusCheckBox.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusTextBox.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusTexteBloc.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusBouton.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusFenetre.cs" />
+    <Compile Include="CPlusObjects\CpcDosCPlusFonction.cs" />
     <Compile Include="CpcDosCPlusListeObjets.cs" />
     <Compile Include="CpcDosCPlusObjet.cs" />
     <Compile Include="Extensions.cs" />
@@ -65,6 +71,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\UCButton.resx">
+      <DependentUpon>UCButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

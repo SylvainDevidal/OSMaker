@@ -4,11 +4,11 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization;
-
+using System.Windows.Forms;
 
 namespace CpcDosCPlus
 {
-    class CpcDosCPlusObjet
+    public class CpcDosCPlusObjet
     {
         protected readonly Dictionary<string, string> Attributes;
 		public virtual string TypeObjet { get; }
@@ -56,7 +56,7 @@ namespace CpcDosCPlus
 						string val = keyval[1].Trim();
 						if (val.StartsWith("\"") && val.EndsWith("\""))
 						{
-							val = val.Substring(1, val.Length - 1);
+							val = val.Substring(1, val.Length - 2);
 						}
 						Attributes[key] = val;
 					}
@@ -77,6 +77,11 @@ namespace CpcDosCPlus
 			return $"{TypeObjet} {ID}";
 		}
 
+		public virtual UserControl CreateUC()
+		{
+			return null;
+		}
+
 		public string ToCPCDosCPlus()
 		{
 			StringBuilder sb = new StringBuilder();
@@ -91,5 +96,5 @@ namespace CpcDosCPlus
 
 			return sb.ToString();
 		}
-    }
+	}
 }
